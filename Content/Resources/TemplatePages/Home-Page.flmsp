@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
     <head>
     </head>
@@ -28,5 +28,8 @@
                 </tbody>
             </table>
         </div>
+		<!-- Adds a resize bar to the navigation pane -->
+		<script type="text/javascript" src="../Scripts/CollapseNavScript.js">
+		</script>
     </body>
 </html>

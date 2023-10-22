@@ -1,12 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
-<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
-    <head>
-    </head>
-    <body>
-        <p>
-            <script type="text/javascript">/*<![CDATA[*//* Add a resize bar to the navigation pane */
-
-// Define the key with which the current width will be stored and retrieved
+﻿// Define the key with which the current width will be stored and retrieved
 // from localStorage so that the width remains constant when changing pages
 // within the site.
 const lsKey = "navwidth";
@@ -69,7 +61,4 @@ function addNavBorder()
 $(document).ready(function () {
     retainNavPaneWidth();
     addNavBorder();
-});/*]]>*/</script>
-        </p>
-    </body>
-</html>
+});

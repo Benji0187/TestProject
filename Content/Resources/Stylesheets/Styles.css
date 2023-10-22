@@ -391,6 +391,50 @@ p.footer-sub
 	margin-top: 14px;
 }
 
+.sidenav-wrapper 
+{
+    /* ensure sidenav-wrapper comes before nav-border in sidenav-layout
+flex row */
+    order: 1;
+
+    /* avoid horizontal scrolling on overflow */
+    overflow-x: hidden;
+}
+
+.nav-border {
+    /* resizable nav-border between nav menu and body content added via
+nav-resize.js script */
+
+    background-color: #e1e1e175;
+
+    /* ensure nav-border comes between sidenav-wrapper and body-container in
+sidenav-layout flex row */
+    order: 2;
+
+    /* allow horizontal (east-west) resizing only */
+    cursor: ew-resize;
+
+    /* don't allow nav-border to grow or shrink, and make it 3px wide */
+    flex: 0 0 3px;
+
+    /* ensure that text isn't selected while the mouse is being dragged */
+    user-select: none;
+}
+
+.body-container {
+    /* ensure body-container comes after nav-border in sidenav-layout
+flex row */
+    order: 3;
+}
+
+@media only screen and (max-width: 1279px) 
+{
+    /* hide nav border when nav pane is not displayed */
+    .nav-border {
+        display: none;
+    }
+}
+
 @media tablet
 {
 	/* Home page topic */
