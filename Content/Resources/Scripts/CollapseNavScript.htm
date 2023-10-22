@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <p>
+            <script type="text/javascript">/*<![CDATA[*//* Add a resize bar to the navigation pane */
+
+// Define the key with which the current width will be stored and retrieved
+// from localStorage so that the width remains constant when changing pages
+// within the site.
+const lsKey = "navwidth";
+
+// Utility function to set the nav pane width to the specified width
+function setNavPaneWidth(width) {
+    const navPane = document.getElementsByClassName('sidenav-wrapper')[0];
+    navPane.style.width = width;
+}
+
+// If the nav pane width has been previously set, keep it at the existing
+// width stored in localStorage when loading a new page within the site.
+function retainNavPaneWidth() {
+    const navWidth = localStorage.getItem(lsKey);
+
+    if (navWidth != "") {
+        setNavPaneWidth(navWidth);
+    }
+}
+
+// Resize the nav pane according to the current x-coordinate of the mouse
+// position and store that width in localStorage for retrieval on a new page
+// within the site.
+function resize(e) {
+    const width = e.clientX + "px";
+
+    setNavPaneWidth(width)
+    localStorage.setItem(lsKey, width);
+}
+
+// Add a div between the nav pane and the main content window to which an
+// ew-resize cursor and the resizing mouse event behavior can be attached
+// to allow the nav pane width to be manually resized.
+function addNavBorder() 
+{
+    // Create the navBorder div and class it with nav-border for CSS styling
+    const navBorder = document.createElement('div');
+    navBorder.classList.add('nav-border');
+
+    // Get the sidenav-layout div and append the navBorder div as a child;
+    // the flexbox order settings on the divs in the CSS will make sure
+    // it ends up between the nav pane and the main content div
+    const contentRow = document.getElementsByClassName('sidenav-layout')[0];
+    contentRow.appendChild(navBorder);
+
+    // Add an event listener to the nav border on mousedown, whose anonymous
+    // function in turn adds event listeners to the document on:
+    // - mousemove, whose named function resizes the nav pane
+    // - mouseup, whose anonymous function removes the mousemove event listener
+    navBorder.addEventListener("mousedown", function () {
+        document.addEventListener("mousemove", resize);
+        document.addEventListener("mouseup", function () {
+            document.removeEventListener("mousemove", resize);
+        });
+    });
+}
+
+// When the page is ready, check for the current setting of the nav pane width
+// and add the nav border for resizing
+$(document).ready(function () {
+    retainNavPaneWidth();
+    addNavBorder();
+});/*]]>*/</script>
+        </p>
+    </body>
+</html>
